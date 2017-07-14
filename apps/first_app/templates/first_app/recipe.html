@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <title>Add a Recipe</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">
+            <img alt="Brand" src="http://icons.iconarchive.com/icons/iconka/cat-commerce/64/client-icon.png">
+          </a>
+          <p style="margin-left: 50px;">Chef Sarracha</p>
+        </div>
+      </div>
+      </nav>
+    </div>
+    <div class="container">
+      <h2>Add a Recipe</h2>
+      {% if messages %}
+      {% for msg in messages%}
+      <ul>
+        <li>
+          {{ msg }}
+        </li>
+      </ul>
+      {% endfor %}
+      {% endif %}
+      <form method="post" action='/add_recipe'>
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="dish_name">Name of Dish</label>
+          <input type="text" name="dish_name" class="form-control"  placeholder="Name of Dish">
+        </div>
+
+          <div class="form-group">
+            <label for="cook_time">Cook Time (minutes)</label>
+            <input type="number" name="cook_time" class="form-control" value="1">
+          </div>
+
+          <div class="form-group">
+            <label for="Video">Add a link for a Video</label>
+            <input type="video" name="video" class="form-control" >
+          </div>
+
+          <div class="form-group">
+            <label for="ingredients">Ingredients</label>
+            <textarea rows='4' cols='50' type="text" name='ingredient' class="form-control"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="instruction">Instructions</label>
+            <textarea rows='4' cols='50' type="text" name='instruction' class="form-control"></textarea>
+          </div>
+
+        <!-- <div class="form-group">
+          <label for="exampleInputFile">File input</label>
+          <input type="file" id="exampleInputFile">
+          <p class="help-block">Example block-level help text here.</p>
+        </div> -->
+
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>

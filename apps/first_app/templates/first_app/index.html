@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <head>
+    <meta charset="utf-8">
+    <title>Cooking Mama</title>
+  </head>
+  <body>
+<div class="container">
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <img alt="Brand" src="http://icons.iconarchive.com/icons/iconka/cat-commerce/64/client-icon.png">
+      </a>
+      <p style="margin-left: 50px;">Chef Sarracha</p>
+    </div>
+  </div>
+</nav>
+
+  <h4>Registration</h4>
+  {% if messages %}
+  {% for msg in messages%}
+  <ul>
+    <li>
+      {{ msg }}
+    </li>
+  </ul>
+  {% endfor %}
+  {% endif %}
+  <div class='reg'>
+
+    <form action='/add_user' method='POST'>
+       {%csrf_token%}
+       <table>
+         <tbody>
+           <tr>
+            <td>First Name:</td>
+            <td><input type='text' name='first_name' /> </td>
+           </tr>
+           <tr>
+            <td>Last Name:</td>
+            <td><input type='text' name='last_name' /> </td>
+           </tr>
+           <tr>
+            <td>User Name</td>
+            <td><input type='text' name='username' /> </td>
+           </tr>
+           <tr>
+            <td>Email:</td>
+            <td><input type='text' name='email' /> </td>
+           </tr>
+           <tr>
+             <tr>
+              <td>Admin:</td>
+              <td><input type='checkbox' name='admin' value='True' />I am an Admin </td>
+             </tr>
+             <tr>
+            <td>Password:</td>
+            <td><input type='password' name='password' /> </td>
+           </tr>
+           <tr>
+            <td>Confirm PW:</td>
+            <td><input type='password' name='confirm' /> </td>
+           </tr>
+         </tbody>
+       </table>
+          <input type="submit" value="submit" />
+    </form>
+  </div> <!--end of class reg-->
+  <div class='login'>
+    <h6>Already Registered</h6>
+    <h4>Login</h4>
+    <form action='/login' method='POST'>
+      {%csrf_token%}
+    <table>
+      <tbody>
+        <tr>
+         <td>Email:</td>
+         <td><input type='text' name='email' /> </td>
+        </tr>
+        <tr>
+         <td>Password:</td>
+         <td><input type='text' name='password' /> </td>
+        </tr>
+      </tbody>
+    </table>
+      <input type="submit" value="Login" />
+    </form>
+  </div><!--end of clas login-->
+</div>
+</body>
+</html>

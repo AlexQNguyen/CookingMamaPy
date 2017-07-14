@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <title>All Reciepes</title>
+  </head>
+  <body>
+  <div class="container">
+
+
+    <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">
+          <img alt="Brand" src="http://icons.iconarchive.com/icons/iconka/cat-commerce/64/client-icon.png">
+        </a>
+        <p style="margin-left: 50px;">Chef Sarracha</p>
+      </div>
+    </div>
+    </nav>
+    {% if user.admin %}
+      <a style="float: right;" href='/recipe'>Add Recipe</a>
+    {% endif %}
+  </div>
+  <div class="container">
+    <h1> Lets Cook! </h1>
+    <div class='recipes'>
+      {% for recipe in recipes %}
+      <a href="">
+        <h3>{{recipe.dish_name}}</h3>
+        <img src='' alt='foodie pic' />
+      </a>
+      <p>Cook Time: {{recipe.cook_time}} mins | posted on: {{recipe.created_at}} | Posted By: {{recipe.add_by.username}} </p>
+      <p><a href="{{recipe.video}}">Video for {{recipe.dish_name}}</a></p>
+      {% if recipe.add_by.id == user.id %}
+        <a href='/delete/{{recipe.id}}'>Delete</a>
+      {% endif %}
+      <hr />
+      {% endfor %}
+
+    </div>
+  </div>
+  </body>
+</html>
